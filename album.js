@@ -2,7 +2,7 @@ const PreviousButton = document.getElementById("PreviousButton");
 const NextButton = document.getElementById("NextButton");
 const AddButton = document.getElementById("AddButton");
 const BackButton = document.getElementById("BackButton");
-
+const FlipHint = document.getElementById("FlipHint");
 const ImageUpload = document.getElementById("ImageUpload");
 const AlbumImage = document.getElementById("AlbumImage");
 
@@ -71,6 +71,9 @@ AlbumImage.addEventListener(
         polaroidInner.classList.add("flipped");
 
         ClickHint.classList.add("hidden");
+
+        FlipHint.textContent =
+            "Hier klicken, um es wieder umzudrehen ♡";
     }
 );
 
@@ -83,6 +86,9 @@ polaroidBack.addEventListener(
             polaroidInner.classList.remove(
                 "flipped"
             );
+
+            FlipHint.textContent =
+                "Zum Umdrehen hier klicken ♡";
         }
     }
 );

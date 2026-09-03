@@ -31,15 +31,11 @@ body {
         );
 
     font-family: 'Quicksand', sans-serif;
-
     color: #5c4a3a;
 
     overflow: hidden;
     overflow-x: hidden;
 }
-
-
-/* QUESTION */
 
 .question-container {
     position: absolute;
@@ -49,7 +45,6 @@ body {
 
     display: flex;
     flex-direction: column;
-
     align-items: center;
     justify-content: center;
 
@@ -71,12 +66,12 @@ body {
 
 .intro {
     font-size: 1.3rem;
-
     font-weight: 500;
 
     color: #8a6f5a;
 
-    margin: 0 0 1rem;
+    margin:
+        0 0 1rem;
 
     letter-spacing: 0.1em;
 }
@@ -123,17 +118,20 @@ body {
 
 #YesButton,
 #NoButton {
-    font-family: 'Quicksand', sans-serif;
+    font-family:
+        'Quicksand',
+        sans-serif;
 
     font-size: 1.6rem;
-
     font-weight: 700;
 
     border: none;
 
     border-radius: 2rem;
 
-    padding: 1.2rem 3.5rem;
+    padding:
+        1.2rem
+        3.5rem;
 
     cursor: pointer;
 
@@ -205,14 +203,15 @@ body {
     z-index: 2000;
 
     font-size: 4rem;
-
     font-weight: 800;
 
     color: #5c4a3a;
 
     background: #fffaf3;
 
-    padding: 2rem 4rem;
+    padding:
+        2rem
+        4rem;
 
     border-radius: 2rem;
 
@@ -222,9 +221,6 @@ body {
     animation:
         messageAppear 1.5s ease forwards;
 }
-
-
-/* PLEASURE */
 
 .pleasure-container {
     min-height: 100vh;
@@ -243,7 +239,9 @@ body {
 
     width: min(750px, 90vw);
 
-    padding: 4rem 3rem;
+    padding:
+        4rem
+        3rem;
 
     text-align: center;
 
@@ -316,7 +314,8 @@ body {
 }
 
 .divider {
-    margin: 2rem auto;
+    margin:
+        2rem auto;
 
     font-size: 1.4rem;
 
@@ -348,13 +347,17 @@ body {
 .action-button {
     width: 50%;
 
-    padding: 1.1rem 1.5rem;
+    padding:
+        1.1rem
+        1.5rem;
 
     border: none;
 
     border-radius: 1.5rem;
 
-    font-family: 'Quicksand', sans-serif;
+    font-family:
+        'Quicksand',
+        sans-serif;
 
     font-size: 1.2rem;
 
@@ -401,9 +404,6 @@ body {
         0 12px 25px rgba(92, 74, 58, 0.2);
 }
 
-
-/* ALBUM */
-
 .album-container {
     position: absolute;
 
@@ -413,6 +413,7 @@ body {
     left: 0;
     top: 0;
 }
+
 .album-back {
     position: absolute;
 
@@ -428,9 +429,22 @@ body {
     margin: 0;
 
     border: none;
+
     background: transparent;
 
+    color: transparent;
+
     cursor: pointer;
+
+    box-shadow: none;
+}
+
+#BackButton.album-back {
+    background: transparent;
+
+    color: transparent;
+
+    box-shadow: none;
 }
 
 .album-back img {
@@ -534,7 +548,6 @@ body {
     position: absolute;
 
     bottom: 1rem;
-
     left: 50%;
 
     transform:
@@ -574,7 +587,6 @@ body {
     padding: 1.5rem;
 
     border: none;
-
     outline: none;
 
     resize: none;
@@ -782,13 +794,41 @@ body {
         opacity 0.4s ease;
 }
 
+#FlipHint {
+    position: absolute;
 
-/* QUOTES */
+    left: 50%;
+
+    top: calc(52% + 275px);
+
+    transform:
+        translateX(-50%);
+
+    margin: 0;
+
+    width: max-content;
+
+    font-family:
+        'Quicksand',
+        sans-serif;
+
+    font-size: 0.95rem;
+
+    font-weight: 600;
+
+    color: #a68c76;
+
+    text-align: center;
+
+    opacity: 0.8;
+}
 
 .quotes-container {
     min-height: 100vh;
 
-    padding: 3rem 2rem;
+    padding:
+        3rem
+        2rem;
 
     overflow-y: auto;
 }
@@ -809,7 +849,8 @@ body {
 }
 
 .quotes-header p {
-    margin: 0.5rem 0;
+    margin:
+        0.5rem 0;
 
     color: #a68c76;
 
@@ -819,7 +860,8 @@ body {
 }
 
 .quotes-header h1 {
-    margin: 0.5rem 0 0;
+    margin:
+        0.5rem 0 0;
 
     font-size: 3.8rem;
 
@@ -875,7 +917,9 @@ body {
 }
 
 #QuoteAuthor {
-    padding: 1rem 1.2rem;
+    padding:
+        1rem
+        1.2rem;
 
     border:
         1px solid #ddc8b4;
@@ -898,7 +942,9 @@ body {
 #AddQuoteButton {
     align-self: center;
 
-    padding: 1rem 2rem;
+    padding:
+        1rem
+        2rem;
 
     border: none;
 
@@ -1087,7 +1133,9 @@ body {
         3rem auto
         1rem;
 
-    padding: 1rem 2rem;
+    padding:
+        1rem
+        2rem;
 
     border: none;
 
@@ -1128,11 +1176,211 @@ body {
         0 12px 25px rgba(92, 74, 58, 0.2);
 }
 
+.login-container {
+    min-height: 100vh;
+    min-height: 100dvh;
 
-/* ANIMATIONEN */
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 2rem;
+}
+
+.login-card {
+    width: min(600px, 92vw);
+
+    padding:
+        4rem
+        3rem;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffaf3,
+            #f8eadb
+        );
+
+    border:
+        1px solid rgba(210, 184, 158, 0.5);
+
+    border-radius: 2.5rem;
+
+    box-shadow:
+        0 20px 50px rgba(92, 74, 58, 0.16),
+        inset 0 2px 4px rgba(255, 255, 255, 0.9);
+}
+
+.login-heart {
+    font-size: 4rem;
+
+    color: #d88976;
+
+    margin-bottom: 0.5rem;
+
+    animation:
+        heartPulse 2.5s ease-in-out infinite;
+}
+
+.login-intro {
+    margin:
+        0 0 0.5rem;
+
+    font-size: 1.2rem;
+
+    color: #a68c76;
+
+    letter-spacing: 0.08em;
+}
+
+.login-card h1 {
+    margin: 0;
+
+    font-size: 3.5rem;
+
+    line-height: 1.1;
+
+    color: #5c4a3a;
+
+    font-weight: 800;
+
+    letter-spacing: -0.04em;
+
+    text-shadow:
+        0 2px 0 #fff8ee,
+        0 5px 12px rgba(92, 74, 58, 0.12);
+}
+
+.login-text {
+    margin:
+        2rem 0
+        2.5rem;
+
+    font-size: 1.2rem;
+
+    line-height: 1.6;
+
+    color: #8a6f5a;
+}
+
+.login-form {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 1rem;
+}
+
+#PasswordInput {
+    width: min(400px, 100%);
+
+    padding:
+        1.2rem
+        1.5rem;
+
+    border:
+        1px solid #ddc8b4;
+
+    border-radius: 1.5rem;
+
+    outline: none;
+
+    background: #fffdf8;
+
+    color: #5c4a3a;
+
+    font-family:
+        'Quicksand',
+        sans-serif;
+
+    font-size: 1.1rem;
+
+    text-align: center;
+
+    box-shadow:
+        0 5px 15px rgba(92, 74, 58, 0.08);
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+#PasswordInput::placeholder {
+    color: #b9a18d;
+}
+
+#PasswordInput:focus {
+    border-color: #d88976;
+
+    box-shadow:
+        0 5px 20px rgba(92, 74, 58, 0.12);
+}
+
+#LoginButton {
+    width: min(400px, 100%);
+
+    padding:
+        1.2rem
+        2rem;
+
+    border: none;
+
+    border-radius: 1.5rem;
+
+    background:
+        linear-gradient(
+            145deg,
+            #9bbb83,
+            #829f6c
+        );
+
+    color: #fffaf5;
+
+    font-family:
+        'Quicksand',
+        sans-serif;
+
+    font-size: 1.2rem;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px rgba(92, 74, 58, 0.18);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+#LoginButton:hover {
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 15px 30px rgba(92, 74, 58, 0.25);
+}
+
+#LoginError {
+    min-height: 1.5rem;
+
+    margin:
+        0.5rem 0 0;
+
+    color: #c47762;
+
+    font-size: 0.95rem;
+}
 
 @keyframes messageAppear {
-
     0% {
         opacity: 0;
 
@@ -1165,7 +1413,6 @@ body {
 }
 
 @keyframes heartPulse {
-
     0%,
     100% {
         transform:
@@ -1179,7 +1426,6 @@ body {
 }
 
 @keyframes clickHintFloat {
-
     0%,
     100% {
         transform:
@@ -1194,24 +1440,8 @@ body {
     }
 }
 
-
-/* MOBILE */
-
 @media (max-width: 700px) {
 
-    .album-back {
-        left: 12px;
-        top: 15px;
-
-        width: 38px;
-        height: 38px;
-    }
-
-    .album-back img {
-        width: 38px;
-        height: 38px;
-    }
-    
     body {
         min-height: 100dvh;
     }
@@ -1240,9 +1470,9 @@ body {
         font-size: 1.2rem;
 
         padding:
-            1rem 2rem;
+            1rem
+            2rem;
     }
-
 
     .pleasure-container {
         min-height: 100dvh;
@@ -1282,11 +1512,32 @@ body {
         font-size: 1rem;
     }
 
-
     .album-container {
         min-height: 100dvh;
 
         height: 100dvh;
+    }
+
+    .album-back {
+        left: 12px;
+        top: 15px;
+
+        width: 38px;
+        height: 38px;
+    }
+
+    #BackButton.album-back {
+        width: 38px;
+        height: 38px;
+
+        background: transparent;
+
+        box-shadow: none;
+    }
+
+    .album-back img {
+        width: 38px;
+        height: 38px;
     }
 
     .polaroid {
@@ -1334,6 +1585,7 @@ body {
 
     #ClickHint {
         left: auto;
+
         right: 15%;
 
         top: 16%;
@@ -1345,6 +1597,13 @@ body {
         font-size: 2rem;
     }
 
+    #FlipHint {
+        top: calc(48% + 53vw);
+
+        width: 100%;
+
+        font-size: 0.85rem;
+    }
 
     .quotes-container {
         min-height: 100dvh;
@@ -1418,6 +1677,45 @@ body {
 
         width: 100%;
     }
+
+    .login-container {
+        padding: 1.5rem;
+    }
+
+    .login-card {
+        width: 100%;
+
+        padding:
+            3rem
+            1.5rem;
+
+        border-radius: 2rem;
+    }
+
+    .login-heart {
+        font-size: 3rem;
+    }
+
+    .login-intro {
+        font-size: 1rem;
+    }
+
+    .login-card h1 {
+        font-size: 2.5rem;
+    }
+
+    .login-text {
+        font-size: 1rem;
+
+        margin:
+            1.5rem 0
+            2rem;
+    }
+
+    #PasswordInput,
+    #LoginButton {
+        font-size: 1rem;
+    }
 }
 
 @media (max-width: 500px) {
@@ -1468,233 +1766,5 @@ body {
 
     .pleasure-buttons {
         width: 94vw;
-    }
-}
-
-.login-container {
-    min-height: 100vh;
-    min-height: 100dvh;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 2rem;
-}
-
-.login-card {
-    width: min(600px, 92vw);
-
-    padding: 4rem 3rem;
-
-    text-align: center;
-
-    background:
-        linear-gradient(
-            145deg,
-            #fffaf3,
-            #f8eadb
-        );
-
-    border:
-        1px solid rgba(210, 184, 158, 0.5);
-
-    border-radius: 2.5rem;
-
-    box-shadow:
-        0 20px 50px rgba(92, 74, 58, 0.16),
-        inset 0 2px 4px rgba(255, 255, 255, 0.9);
-}
-
-.login-heart {
-    font-size: 4rem;
-    color: #d88976;
-    margin-bottom: 0.5rem;
-
-    animation:
-        heartPulse 2.5s ease-in-out infinite;
-}
-
-.login-intro {
-    margin: 0 0 0.5rem;
-
-    font-size: 1.2rem;
-    color: #a68c76;
-
-    letter-spacing: 0.08em;
-}
-
-.login-card h1 {
-    margin: 0;
-
-    font-size: 3.5rem;
-    line-height: 1.1;
-
-    color: #5c4a3a;
-    font-weight: 800;
-
-    letter-spacing: -0.04em;
-
-    text-shadow:
-        0 2px 0 #fff8ee,
-        0 5px 12px rgba(92, 74, 58, 0.12);
-}
-
-.login-text {
-    margin:
-        2rem 0
-        2.5rem;
-
-    font-size: 1.2rem;
-    line-height: 1.6;
-
-    color: #8a6f5a;
-}
-
-.login-form {
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: 1rem;
-}
-
-#PasswordInput {
-    width: min(400px, 100%);
-
-    padding: 1.2rem 1.5rem;
-
-    border:
-        1px solid #ddc8b4;
-
-    border-radius: 1.5rem;
-
-    outline: none;
-
-    background: #fffdf8;
-
-    color: #5c4a3a;
-
-    font-family:
-        'Quicksand',
-        sans-serif;
-
-    font-size: 1.1rem;
-
-    text-align: center;
-
-    box-shadow:
-        0 5px 15px rgba(92, 74, 58, 0.08);
-
-    transition:
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-#PasswordInput::placeholder {
-    color: #b9a18d;
-}
-
-#PasswordInput:focus {
-    border-color: #d88976;
-
-    box-shadow:
-        0 5px 20px rgba(92, 74, 58, 0.12);
-}
-
-#LoginButton {
-    width: min(400px, 100%);
-
-    padding: 1.2rem 2rem;
-
-    border: none;
-    border-radius: 1.5rem;
-
-    background:
-        linear-gradient(
-            145deg,
-            #9bbb83,
-            #829f6c
-        );
-
-    color: #fffaf5;
-
-    font-family:
-        'Quicksand',
-        sans-serif;
-
-    font-size: 1.2rem;
-    font-weight: 700;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 10px 25px rgba(92, 74, 58, 0.18);
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-#LoginButton:hover {
-    transform:
-        translateY(-3px);
-
-    box-shadow:
-        0 15px 30px rgba(92, 74, 58, 0.25);
-}
-
-#LoginError {
-    min-height: 1.5rem;
-
-    margin: 0.5rem 0 0;
-
-    color: #c47762;
-
-    font-size: 0.95rem;
-}
-
-@media (max-width: 500px) {
-
-    .login-container {
-        padding: 1.5rem;
-    }
-
-    .login-card {
-        width: 100%;
-
-        padding:
-            3rem
-            1.5rem;
-
-        border-radius: 2rem;
-    }
-
-    .login-heart {
-        font-size: 3rem;
-    }
-
-    .login-intro {
-        font-size: 1rem;
-    }
-
-    .login-card h1 {
-        font-size: 2.5rem;
-    }
-
-    .login-text {
-        font-size: 1rem;
-
-        margin:
-            1.5rem 0
-            2rem;
-    }
-
-    #PasswordInput,
-    #LoginButton {
-        font-size: 1rem;
     }
 }
