@@ -12,7 +12,12 @@ const polaroidBack = document.querySelector(".polaroid-back");
 const Note = document.getElementById("Note");
 const ClickHint = document.getElementById("ClickHint");
 const QuotesButton = document.getElementById("QuotesButton");
+const BackButton =
+    document.getElementById("BackButton");
 
+BackButton.addEventListener("click", function() {
+    window.location.href = "pleasure.html";
+});
 // =========================================
 // STANDARD-BILDER
 // =========================================
