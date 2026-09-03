@@ -139,11 +139,11 @@ button:active {
 }
 
 #timer {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.04em;
     position: absolute;
-    bottom: 5%;
+    bottom: 8%;
     left: 50%;
     transform: translateX(-50%);
     color: #5c4a3a;
@@ -158,10 +158,11 @@ button:active {
     box-shadow:
         0 8px 20px rgba(92, 74, 58, 0.15),
         inset 0 2px 4px rgba(255, 255, 255, 0.9);
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: 'Quicksand', "Times New Roman", serif;
     transition:
         transform 0.3s ease,
         box-shadow 0.3s ease;
+    white-space: nowrap;
 }
 
 #timer:hover {
@@ -170,6 +171,20 @@ button:active {
         0 12px 25px rgba(92, 74, 58, 0.2),
         inset 0 2px 4px rgba(255, 255, 255, 0.9);
 }
+
+#together {
+    position: absolute;
+    bottom: 4%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #8a6f5a;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+
 
 .album-container {
     position: absolute;
