@@ -10,7 +10,7 @@ const polaroidInner = document.querySelector(".polaroid-inner");
 const polaroidBack = document.querySelector(".polaroid-back");
 
 const Note = document.getElementById("Note");
-
+const ClickHint = document.getElementById("ClickHint");
 const QuotesButton = document.getElementById("QuotesButton");
 
 // =========================================
@@ -103,6 +103,7 @@ function showPicture() {
 AlbumImage.addEventListener("click", function() {
 
     polaroidInner.classList.add("flipped");
+    ClickHint.classList.add("hidden");
 
 });
 

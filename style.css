@@ -1341,3 +1341,63 @@ body {
 
     font-size: 1.2rem;
 }
+
+/* =========================================
+   KLICK-MICH HINWEIS
+   ========================================= */
+
+#ClickHint {
+    position: absolute;
+
+    left: 35%;
+    top: 18%;
+
+    z-index: 30;
+
+    font-family: 'Quicksand', sans-serif;
+
+    font-size: 1.3rem;
+
+    font-weight: 700;
+
+    color: #8a6f5a;
+
+    transform: rotate(8deg);
+
+    animation: clickHintFloat 2s ease-in-out infinite;
+}
+
+#ClickHint span {
+    display: block;
+
+    font-size: 2.5rem;
+
+    margin-left: -15px;
+    margin-top: -5px;
+
+    transform: rotate(-20deg);
+}
+
+#ClickHint.hidden {
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: opacity 0.4s ease;
+}
+
+@keyframes clickHintFloat {
+
+    0%,
+    100% {
+        transform:
+            rotate(8deg)
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            rotate(8deg)
+            translateY(-6px);
+    }
+}
