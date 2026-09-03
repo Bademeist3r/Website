@@ -1,0 +1,212 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(
+        135deg,
+        #f7eadb,
+        #f2dfcf,
+        #ead8c8
+    );
+    font-family: 'Quicksand', sans-serif;
+    color: #5c4a3a;
+}
+
+h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    text-align: center;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    color: #5c4a3a;
+    letter-spacing: -0.04rem;
+    text-shadow:
+        0 2px 0 #fff8ee,
+        0 5px 12px rgba(92, 74, 58, 0.15);
+}
+
+button {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 2.5rem;
+    padding: 3rem 7rem;
+    margin: 0;
+    cursor: pointer;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
+    box-shadow:
+        0 10px 25px rgba(92, 74, 58, 0.15),
+        inset 0 2px 3px rgba(255, 255, 255, 0.3);
+}
+
+#YesButton {
+    background: linear-gradient(
+        145deg,
+        #9bbb83,
+        #829f6c
+    );
+    color: #fffaf5;
+    position: absolute;
+    left: 10%;
+    width: 20%;
+}
+
+#YesButton:hover {
+    transform: scale(1.05) rotate(-1deg);
+    box-shadow:
+        0 15px 30px rgba(92, 74, 58, 0.22),
+        inset 0 2px 4px rgba(255, 255, 255, 0.35);
+}
+
+#NoButton {
+    background: linear-gradient(
+        145deg,
+        #e39a78,
+        #d47f5e
+    );
+    color: #fffaf5;
+    position: absolute;
+    right: 10%;
+    width: 20%;
+}
+
+#NoButton:hover {
+    transform: scale(1.05) rotate(1deg);
+    box-shadow:
+        0 15px 30px rgba(92, 74, 58, 0.22),
+        inset 0 2px 4px rgba(255, 255, 255, 0.35);
+}
+
+.action-button {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 1.2rem 2rem;
+    cursor: pointer;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    box-shadow:
+        0 8px 20px rgba(92, 74, 58, 0.15);
+    position: absolute;
+    width: 30%;
+    text-align: center;
+}
+
+#BackButton {
+    background: linear-gradient(
+        145deg,
+        #fff8ee,
+        #fcebd9
+    );
+    color: #5c4a3a;
+    left: 10%;
+}
+
+#ImgButton {
+    background: linear-gradient(
+        145deg,
+        #9bbb83,
+        #829f6c
+    );
+    color: #fffaf5;
+    right: 10%;
+}
+
+#BackButton:hover {
+    transform: scale(1.05);
+    background: #fcebd9;
+    box-shadow:
+        0 12px 25px rgba(92, 74, 58, 0.18);
+}
+
+#ImgButton:hover {
+    transform: scale(1.05) rotate(1deg);
+    box-shadow:
+        0 15px 30px rgba(92, 74, 58, 0.22);
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+#timer {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #5c4a3a;
+    background: linear-gradient(
+        145deg,
+        #fffaf3,
+        #f3e2d0
+    );
+    border: 1px solid #d2b89e;
+    border-radius: 2rem;
+    padding: 1rem 2.5rem;
+    box-shadow:
+        0 8px 20px rgba(92, 74, 58, 0.15),
+        inset 0 2px 4px rgba(255, 255, 255, 0.9);
+    font-family: Georgia, "Times New Roman", serif;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+#timer:hover {
+    transform: translateX(-50%) translateY(-3px);
+    box-shadow:
+        0 12px 25px rgba(92, 74, 58, 0.2),
+        inset 0 2px 4px rgba(255, 255, 255, 0.9);
+}
+
+.polaroid {
+    position: relative;
+    background: #fffdf8;
+    padding: 1rem 1rem 3.5rem 1rem;
+    width: 250px;
+    border-radius: 2px;
+    box-shadow:
+        0 8px 18px rgba(92, 74, 58, 0.18),
+        0 2px 4px rgba(92, 74, 58, 0.08);
+    transform: rotate(-3deg);
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.polaroid:hover {
+    transform: rotate(0deg) translateY(-6px);
+    box-shadow:
+        0 15px 30px rgba(92, 74, 58, 0.22);
+}
+
+.polaroid-front img {
+    width: 100%;
+    display: block;
+    border-radius: 1px;
+}
+
+.polaroid::after {
+    content: "♡";
+    position: absolute;
+    bottom: 0.6rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 1.5rem;
+    color: #d9825f;
+}
