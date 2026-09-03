@@ -1,3 +1,7 @@
+if (localStorage.getItem("loggedIn") !== "true") {
+    window.location.href = "login.html";
+}
+
 const noButton = document.getElementById("NoButton");
 
 function moveNoButton() {
