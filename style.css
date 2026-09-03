@@ -1,49 +1,172 @@
+/* =========================================
+   GRUNDLAGEN
+   ========================================= */
+
 * {
     box-sizing: border-box;
 }
 
+html,
 body {
     margin: 0;
-    min-height: 100vh;
-    background: linear-gradient(
-        135deg,
-        #f7eadb,
-        #f2dfcf,
-        #ead8c8
-    );
-    font-family: 'Quicksand', sans-serif;
-    color: #5c4a3a;
+    min-height: 100%;
 }
 
-h1 {
-    font-size: 4rem;
-    font-weight: 800;
-    text-align: center;
-    margin-top: 5rem;
-    margin-bottom: 5rem;
+body {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255, 255, 255, 0.55),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(216, 137, 118, 0.08),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #f7eadb,
+            #f2dfcf,
+            #ead8c8
+        );
+
+    font-family: 'Quicksand', sans-serif;
+
     color: #5c4a3a;
-    letter-spacing: -0.04rem;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   FRAGESEITE
+   ========================================= */
+
+.question-container {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 2rem;
+}
+
+
+/* Kleines Herz */
+
+.little-heart {
+    font-size: 3.5rem;
+
+    color: #d88976;
+
+    margin-bottom: 0.5rem;
+
+    animation: heartPulse 2.5s ease-in-out infinite;
+}
+
+
+/* Hey du */
+
+.intro {
+    font-size: 1.3rem;
+
+    font-weight: 500;
+
+    color: #8a6f5a;
+
+    margin: 0 0 1rem;
+
+    letter-spacing: 0.1em;
+}
+
+
+/* Hauptüberschrift */
+
+.question-container h1 {
+    font-size: 4.5rem;
+
+    line-height: 1.05;
+
+    margin: 0;
+
+    color: #5c4a3a;
+
+    font-weight: 800;
+
+    letter-spacing: -0.04em;
+
     text-shadow:
         0 2px 0 #fff8ee,
-        0 5px 12px rgba(92, 74, 58, 0.15);
+        0 6px 15px rgba(92, 74, 58, 0.12);
 }
 
-button {
+
+/* Frage */
+
+.question-text {
+    font-size: 1.5rem;
+
+    line-height: 1.5;
+
+    color: #8a6f5a;
+
+    margin-top: 2rem;
+
+    margin-bottom: 3rem;
+}
+
+
+/* =========================================
+   FRAGE BUTTONS
+   ========================================= */
+
+.button-container {
+    display: flex;
+
+    gap: 2rem;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+}
+
+
+#YesButton,
+#NoButton {
     font-family: 'Quicksand', sans-serif;
-    font-size: 3rem;
+
+    font-size: 1.6rem;
+
     font-weight: 700;
+
     border: none;
-    border-radius: 2.5rem;
-    padding: 3rem 7rem;
-    margin: 0;
+
+    border-radius: 2rem;
+
+    padding: 1.2rem 3.5rem;
+
     cursor: pointer;
+
     transition:
         transform 0.25s ease,
         box-shadow 0.25s ease;
-    box-shadow:
-        0 10px 25px rgba(92, 74, 58, 0.15),
-        inset 0 2px 3px rgba(255, 255, 255, 0.3);
 }
+
+
+/* Ja */
 
 #YesButton {
     background: linear-gradient(
@@ -51,18 +174,25 @@ button {
         #9bbb83,
         #829f6c
     );
+
     color: #fffaf5;
-    position: absolute;
-    left: 10%;
-    width: 20%;
+
+    box-shadow:
+        0 10px 25px rgba(92, 74, 58, 0.18),
+        inset 0 2px 3px rgba(255, 255, 255, 0.3);
 }
 
+
 #YesButton:hover {
-    transform: scale(1.05) rotate(-1deg);
+    transform: scale(1.08) rotate(-1deg);
+
     box-shadow:
-        0 15px 30px rgba(92, 74, 58, 0.22),
+        0 15px 30px rgba(92, 74, 58, 0.25),
         inset 0 2px 4px rgba(255, 255, 255, 0.35);
 }
+
+
+/* Nein */
 
 #NoButton {
     background: linear-gradient(
@@ -70,36 +200,285 @@ button {
         #e39a78,
         #d47f5e
     );
+
     color: #fffaf5;
-    position: absolute;
-    right: 10%;
-    width: 20%;
+
+    box-shadow:
+        0 10px 25px rgba(92, 74, 58, 0.15);
+
+    position: relative;
 }
 
-#NoButton:hover {
-    transform: scale(1.05) rotate(1deg);
-    box-shadow:
-        0 15px 30px rgba(92, 74, 58, 0.22),
-        inset 0 2px 4px rgba(255, 255, 255, 0.35);
+
+/* Hinweis */
+
+.hint {
+    margin-top: 2rem;
+
+    font-size: 0.95rem;
+
+    color: #a68c76;
+
+    opacity: 0.8;
 }
+
+
+/* =========================================
+   JA ANIMATION
+   ========================================= */
+
+.yes-message {
+    position: fixed;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 2000;
+
+    font-size: 4rem;
+
+    font-weight: 800;
+
+    color: #5c4a3a;
+
+    background: #fffaf3;
+
+    padding: 2rem 4rem;
+
+    border-radius: 2rem;
+
+    box-shadow:
+        0 20px 50px rgba(92, 74, 58, 0.2);
+
+    animation:
+        messageAppear 1.5s ease forwards;
+}
+
+
+@keyframes messageAppear {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.7);
+    }
+
+    20% {
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.05);
+    }
+
+    40% {
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(-50%, -55%)
+            scale(1);
+    }
+}
+
+
+@keyframes heartPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+
+/* =========================================
+   PLEASURE / UNSERE ZEIT
+   ========================================= */
+
+.pleasure-container {
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 2rem;
+}
+
+
+/* =========================================
+   TIMER KARTE
+   ========================================= */
+
+.pleasure-card {
+    position: relative;
+
+    width: min(750px, 90vw);
+
+    padding: 4rem 3rem;
+
+    text-align: center;
+
+    background: linear-gradient(
+        145deg,
+        #fffaf3,
+        #f8eadb
+    );
+
+    border: 1px solid rgba(210, 184, 158, 0.5);
+
+    border-radius: 2.5rem;
+
+    box-shadow:
+        0 20px 50px rgba(92, 74, 58, 0.16),
+        inset 0 2px 4px rgba(255, 255, 255, 0.9);
+}
+
+
+/* Herz */
+
+.pleasure-heart {
+    font-size: 3.5rem;
+
+    color: #d88976;
+
+    margin-bottom: 0.5rem;
+
+    animation:
+        heartPulse 2.5s ease-in-out infinite;
+}
+
+
+/* Intro */
+
+.pleasure-intro {
+    margin: 0;
+
+    font-size: 1.2rem;
+
+    color: #a68c76;
+
+    letter-spacing: 0.08em;
+}
+
+
+/* Überschrift */
+
+.pleasure-card h1 {
+    margin: 0.5rem 0 2.5rem;
+
+    font-size: 4rem;
+
+    font-weight: 800;
+
+    color: #5c4a3a;
+
+    letter-spacing: -0.04em;
+
+    text-shadow:
+        0 2px 0 #fff8ee,
+        0 5px 12px rgba(92, 74, 58, 0.12);
+}
+
+
+/* Timer */
+
+#timer {
+    margin: 0;
+
+    font-size: 1.8rem;
+
+    line-height: 1.7;
+
+    font-weight: 600;
+
+    color: #6d5746;
+}
+
+
+/* Trennlinie */
+
+.divider {
+    margin: 2rem auto;
+
+    font-size: 1.4rem;
+
+    color: #d88976;
+
+    opacity: 0.8;
+}
+
+
+/* Datum */
+
+#together {
+    font-size: 1.1rem;
+
+    font-weight: 500;
+
+    color: #a68c76;
+
+    letter-spacing: 0.04em;
+}
+
+
+/* =========================================
+   PLEASURE BUTTONS
+   ========================================= */
+
+.pleasure-buttons {
+    width: min(750px, 90vw);
+
+    display: flex;
+
+    gap: 1.5rem;
+
+    margin-top: 2rem;
+}
+
 
 .action-button {
     font-family: 'Quicksand', sans-serif;
-    font-size: 3rem;
+
+    font-size: 1.2rem;
+
     font-weight: 700;
+
     border: none;
+
     border-radius: 1.5rem;
-    padding: 1.2rem 2rem;
+
+    padding: 1.1rem 1.5rem;
+
     cursor: pointer;
+
     transition:
         transform 0.25s ease,
         box-shadow 0.25s ease;
+
     box-shadow:
         0 8px 20px rgba(92, 74, 58, 0.15);
-    position: absolute;
-    width: 30%;
-    text-align: center;
+
+    width: 50%;
 }
+
 
 #BackButton {
     background: linear-gradient(
@@ -107,9 +486,10 @@ button {
         #fff8ee,
         #fcebd9
     );
+
     color: #5c4a3a;
-    left: 10%;
 }
+
 
 #ImgButton {
     background: linear-gradient(
@@ -117,197 +497,847 @@ button {
         #9bbb83,
         #829f6c
     );
+
     color: #fffaf5;
-    right: 10%;
 }
 
-#BackButton:hover {
-    transform: scale(1.05);
-    background: #fcebd9;
-    box-shadow:
-        0 12px 25px rgba(92, 74, 58, 0.18);
-}
 
+#BackButton:hover,
 #ImgButton:hover {
-    transform: scale(1.05) rotate(1deg);
+    transform: translateY(-3px);
+
     box-shadow:
-        0 15px 30px rgba(92, 74, 58, 0.22);
-}
-
-button:active {
-    transform: scale(0.96);
-}
-
-#timer {
-    font-size: 1.8rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    position: absolute;
-    bottom: 8%;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #5c4a3a;
-    background: linear-gradient(
-        145deg,
-        #fffaf3,
-        #f3e2d0
-    );
-    border: 1px solid #d2b89e;
-    border-radius: 2rem;
-    padding: 1rem 2.5rem;
-    box-shadow:
-        0 8px 20px rgba(92, 74, 58, 0.15),
-        inset 0 2px 4px rgba(255, 255, 255, 0.9);
-    font-family: 'Quicksand', "Times New Roman", serif;
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-    white-space: nowrap;
-}
-
-#timer:hover {
-    transform: translateX(-50%) translateY(-3px);
-    box-shadow:
-        0 12px 25px rgba(92, 74, 58, 0.2),
-        inset 0 2px 4px rgba(255, 255, 255, 0.9);
-}
-
-#together {
-    position: absolute;
-    bottom: 4%;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #8a6f5a;
-    letter-spacing: 0.04em;
-    white-space: nowrap;
+        0 12px 25px rgba(92, 74, 58, 0.2);
 }
 
 
+/* =========================================
+   ALBUM
+   ========================================= */
 
 .album-container {
     position: absolute;
+
     width: 100%;
+
     height: 100%;
+
     left: 0;
+
     top: 0;
 }
 
+
+/* =========================================
+   POLAROID
+   ========================================= */
+
 .polaroid {
     position: absolute;
+
     width: 400px;
+
     height: 520px;
+
     left: 50%;
-    top: 55%;
-    transform: translate(-50%, -50%) rotate(-3deg);
+
+    top: 52%;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(-3deg);
+
     perspective: 1000px;
 }
 
+
+/* =========================================
+   POLAROID INNEN
+   ========================================= */
+
 .polaroid-inner {
     position: relative;
+
     width: 100%;
+
     height: 100%;
+
     transform-style: preserve-3d;
-    transition: transform 0.7s ease;
+
+    transition:
+        transform 0.7s ease;
 }
+
 
 .polaroid-inner.flipped {
     transform: rotateY(180deg);
 }
 
+
+/* =========================================
+   POLAROID SEITEN
+   ========================================= */
+
 .polaroid-front,
 .polaroid-back {
     position: absolute;
+
     width: 100%;
+
     height: 100%;
-    padding: 1rem 1rem 4.5rem;
+
+    padding:
+        1rem
+        1rem
+        4.5rem;
+
     background: #fffdf8;
-    border-radius: 2px;
+
+    border-radius: 3px;
+
     box-shadow:
-        0 10px 25px rgba(92, 74, 58, 0.2),
-        0 3px 6px rgba(92, 74, 58, 0.1);
+        0 15px 35px rgba(92, 74, 58, 0.22),
+        0 4px 8px rgba(92, 74, 58, 0.1);
+
     backface-visibility: hidden;
 }
 
+
+/* =========================================
+   FOTO
+   ========================================= */
+
 .polaroid-front img {
     width: 100%;
+
     height: 100%;
+
     object-fit: cover;
+
     display: block;
+
     cursor: pointer;
+
+    transition:
+        transform 0.3s ease;
 }
+
+
+.polaroid-front img:hover {
+    transform: scale(1.015);
+}
+
+
+/* =========================================
+   POLAROID RÜCKSEITE
+   ========================================= */
 
 .polaroid-back {
     transform: rotateY(180deg);
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffdf8,
+            #f9eee1
+        );
 }
+
+
+/* =========================================
+   NOTIZ
+   ========================================= */
 
 #Note {
     width: 100%;
+
     height: 100%;
+
     border: none;
+
     outline: none;
+
     resize: none;
+
     background: transparent;
+
+    color: #6d5746;
+
+    font-family:
+        'Quicksand',
+        sans-serif;
+
+    font-size: 1.3rem;
+
+    line-height: 1.6;
+
+    padding: 1.5rem;
+
+    text-align: left;
 }
+
+
+#Note::placeholder {
+    color: #b9a18d;
+
+    opacity: 0.8;
+}
+
+
+/* =========================================
+   ALBUM BUTTONS
+   ========================================= */
 
 #PreviousButton,
 #NextButton,
 #AddButton {
     position: absolute;
+
     background: transparent;
+
     border: none;
+
     padding: 0;
+
     margin: 0;
+
     cursor: pointer;
+
     box-shadow: none;
+
     width: auto;
+
     z-index: 20;
 }
+
+
+#PreviousButton {
+    left: 30px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+}
+
+
+#NextButton {
+    right: 30px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%)
+        rotate(180deg);
+}
+
+
+#AddButton {
+    left: 50%;
+
+    bottom: 25px;
+
+    transform:
+        translateX(-50%);
+}
+
 
 #PreviousButton img,
 #NextButton img,
 #AddButton img {
-    width: 70px;
-    height: 70px;
+    display: block;
+
+    width: 60px;
+
+    height: 60px;
+
     object-fit: contain;
-    filter: brightness(0) invert(1);
-    transition: transform 0.2s ease;
+
+    opacity: 0.75;
+
+    transition:
+        transform 0.25s ease,
+        opacity 0.25s ease;
 }
 
-#PreviousButton {
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
+
+#PreviousButton img:hover,
+#NextButton img:hover,
+#AddButton img:hover {
+    opacity: 1;
+
+    transform: scale(1.1);
 }
 
-#NextButton {
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
+
+#AddButton img {
+    width: 55px;
+
+    height: 55px;
 }
 
-#PreviousButton:hover img {
-    transform: scale(1.15);
-}
 
-#NextButton img {
-    transform: rotate(180deg);
-}
+/* =========================================
+   ALBUM ZUSATZINFO
+   ========================================= */
 
-#NextButton:hover img {
-    transform: rotate(180deg) scale(1.15);
-}
+.album-container::after {
+    content: "♡ Erinnerungen ♡";
 
-#AddButton {
+    position: absolute;
+
+    top: 25px;
+
     left: 50%;
-    bottom: 25px;
-    transform: translateX(-50%);
+
+    transform:
+        translateX(-50%);
+
+    font-size: 1.4rem;
+
+    font-weight: 700;
+
+    color: #8a6f5a;
+
+    letter-spacing: 0.08em;
 }
 
-#AddButton:hover img {
-    transform: scale(1.15) rotate(5deg);
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 700px) {
+
+    .question-container h1 {
+        font-size: 3rem;
+    }
+
+
+    .question-text {
+        font-size: 1.2rem;
+    }
+
+
+    .button-container {
+        gap: 1rem;
+    }
+
+
+    #YesButton,
+    #NoButton {
+        font-size: 1.2rem;
+
+        padding:
+            1rem 2rem;
+    }
+
+
+    .pleasure-card {
+        padding: 3rem 1.5rem;
+    }
+
+
+    .pleasure-card h1 {
+        font-size: 3rem;
+    }
+
+
+    #timer {
+        font-size: 1.3rem;
+    }
+
+
+    .pleasure-buttons {
+        flex-direction: column;
+    }
+
+
+    .action-button {
+        width: 100%;
+    }
+
+
+    .polaroid {
+        width: 80vw;
+
+        height: 105vw;
+
+        max-width: 360px;
+
+        max-height: 470px;
+    }
+
+
+    #PreviousButton {
+        left: 10px;
+    }
+
+
+    #NextButton {
+        right: 10px;
+    }
+
+
+    #PreviousButton img,
+    #NextButton img {
+        width: 45px;
+
+        height: 45px;
+    }
+}
+
+/* =========================================
+   ZITATE & INSIDER
+   ========================================= */
+
+.quotes-container {
+    min-height: 100vh;
+
+    padding: 3rem 2rem;
+
+    overflow-y: auto;
+}
+
+
+.quotes-header {
+    text-align: center;
+
+    margin-bottom: 3rem;
+}
+
+
+.quotes-heart {
+    font-size: 3rem;
+
+    color: #d88976;
+
+    animation:
+        heartPulse 2.5s ease-in-out infinite;
+}
+
+
+.quotes-header p {
+    margin: 0.5rem 0;
+
+    color: #a68c76;
+
+    font-size: 1.1rem;
+
+    letter-spacing: 0.08em;
+}
+
+
+.quotes-header h1 {
+    margin: 0.5rem 0 0;
+
+    font-size: 3.8rem;
+
+    color: #5c4a3a;
+}
+
+
+/* =========================================
+   ZITATE
+   ========================================= */
+
+.quotes-board {
+    width: min(1000px, 95vw);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 2rem;
+}
+
+
+.quote-card {
+    position: relative;
+
+    min-height: 220px;
+
+    padding: 2.5rem 2rem 2rem;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffdf8,
+            #f9eee1
+        );
+
+    border-radius: 4px;
+
+    box-shadow:
+        0 12px 25px
+        rgba(92, 74, 58, 0.15);
+
+    transform:
+        rotate(-1deg);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.quote-card:nth-child(2) {
+    transform: rotate(1.5deg);
+}
+
+
+.quote-card:nth-child(3) {
+    transform: rotate(0.8deg);
+}
+
+
+.quote-card:nth-child(4) {
+    transform: rotate(-1.8deg);
+}
+
+
+.quote-card:hover {
+    transform:
+        rotate(0deg)
+        translateY(-8px)
+        scale(1.02);
+
+    box-shadow:
+        0 20px 35px
+        rgba(92, 74, 58, 0.2);
+}
+
+
+.quote-icon {
+    position: absolute;
+
+    top: 10px;
+
+    left: 20px;
+
+    font-size: 3rem;
+
+    color: #d88976;
+
+    opacity: 0.5;
+}
+
+
+.quote-card p {
+    margin: 1rem 0 2rem;
+
+    font-size: 1.4rem;
+
+    line-height: 1.6;
+
+    color: #5c4a3a;
+
+    font-weight: 600;
+}
+
+
+.quote-card small {
+    color: #a68c76;
+
+    font-size: 0.95rem;
+}
+
+
+/* =========================================
+   ZURÜCK
+   ========================================= */
+
+.quotes-back {
+    display: block;
+
+    margin: 3rem auto 1rem;
+
+    padding: 1rem 2rem;
+
+    border: none;
+
+    border-radius: 1.5rem;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff8ee,
+            #fcebd9
+        );
+
+    color: #5c4a3a;
+
+    font-family:
+        'Quicksand',
+        sans-serif;
+
+    font-size: 1.1rem;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px
+        rgba(92, 74, 58, 0.15);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.quotes-back:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 25px
+        rgba(92, 74, 58, 0.2);
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 700px) {
+
+    .quotes-container {
+        padding: 2rem 1rem;
+    }
+
+
+    .quotes-header h1 {
+        font-size: 2.8rem;
+    }
+
+
+    .quotes-board {
+        grid-template-columns: 1fr;
+
+        gap: 1.5rem;
+    }
+
+
+    .quote-card {
+        min-height: 190px;
+    }
+
+
+    .quote-card p {
+        font-size: 1.2rem;
+    }
+
+}
+
+#QuotesButton {
+    position: absolute;
+
+    right: 30px;
+    bottom: 25px;
+
+    width: 55px;
+    height: 55px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #fffdf8;
+
+    color: #8a6f5a;
+
+    font-size: 1.5rem;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px
+        rgba(92, 74, 58, 0.15);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+#QuotesButton:hover {
+    transform: scale(1.1);
+
+    box-shadow:
+        0 12px 25px
+        rgba(92, 74, 58, 0.2);
+}
+
+/* =========================================
+   ZITAT EINGABE
+   ========================================= */
+
+.quote-input {
+    width: min(700px, 90vw);
+
+    margin: 0 auto 3rem;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1rem;
+}
+
+
+#QuoteInput {
+    width: 100%;
+
+    min-height: 120px;
+
+    padding: 1.2rem;
+
+    resize: vertical;
+
+    border: 1px solid #ddc8b4;
+
+    border-radius: 1rem;
+
+    outline: none;
+
+    background: #fffdf8;
+
+    color: #5c4a3a;
+
+    font-family: 'Quicksand', sans-serif;
+
+    font-size: 1.1rem;
+
+    box-shadow:
+        0 5px 15px
+        rgba(92, 74, 58, 0.08);
+}
+
+
+#QuoteInput:focus {
+    border-color: #d88976;
+}
+
+
+#QuoteAuthor {
+    padding: 1rem 1.2rem;
+
+    border: 1px solid #ddc8b4;
+
+    border-radius: 1rem;
+
+    outline: none;
+
+    background: #fffdf8;
+
+    color: #5c4a3a;
+
+    font-family: 'Quicksand', sans-serif;
+
+    font-size: 1rem;
+}
+
+
+#AddQuoteButton {
+    align-self: center;
+
+    padding: 1rem 2rem;
+
+    border: none;
+
+    border-radius: 1.5rem;
+
+    background: linear-gradient(
+        145deg,
+        #9bbb83,
+        #829f6c
+    );
+
+    color: white;
+
+    font-family: 'Quicksand', sans-serif;
+
+    font-size: 1.1rem;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px
+        rgba(92, 74, 58, 0.15);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+#AddQuoteButton:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 25px
+        rgba(92, 74, 58, 0.2);
+}
+
+
+/* =========================================
+   ZITAT LÖSCHEN
+   ========================================= */
+
+.delete-quote {
+    position: absolute;
+
+    top: 10px;
+
+    right: 12px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #b9a18d;
+
+    font-size: 1.5rem;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    transition: opacity 0.2s ease;
+}
+
+
+.quote-card:hover .delete-quote {
+    opacity: 1;
+}
+
+
+.delete-quote:hover {
+    color: #d88976;
+}
+
+
+/* =========================================
+   KEINE ZITATE
+   ========================================= */
+
+.no-quotes {
+    grid-column: 1 / -1;
+
+    text-align: center;
+
+    color: #a68c76;
+
+    font-size: 1.2rem;
 }

@@ -1,12 +1,14 @@
 const noButton = document.getElementById("NoButton");
 
 function moveNoButton() {
+
     const maxX = window.innerWidth - noButton.offsetWidth;
     const maxY = window.innerHeight - noButton.offsetHeight;
 
     const newX = Math.random() * maxX;
     const newY = Math.random() * maxY;
 
+    noButton.style.position = "fixed";
     noButton.style.left = newX + "px";
     noButton.style.top = newY + "px";
 }
@@ -20,13 +22,36 @@ noButton.addEventListener("click", function() {
 });
 
 
-/* =========================
-   JA BUTTON
-   ========================= */
+// =========================
+// JA BUTTON
+// =========================
 
 const yesButton = document.getElementById("YesButton");
 
 yesButton.addEventListener("click", function() {
+
+    // =====================================
+    // STARTZEIT SPEICHERN
+    // =====================================
+
+    localStorage.setItem(
+        "startTime",
+        new Date().toISOString()
+    );
+
+
+    // =====================================
+    // HERZEN / KONFETTI
+    // =====================================
+
+    const symbols = [
+        "♡",
+        "♥",
+        "♡",
+        "✦",
+        "♥",
+        "♡"
+    ];
 
     const colors = [
         "#9bbb83",
@@ -34,69 +59,91 @@ yesButton.addEventListener("click", function() {
         "#f5d6b3",
         "#fff3d6",
         "#d8bfa8",
-        "#c8ad91",
         "#f4b6a6",
         "#b8c9a8"
     ];
 
-    for (let i = 0; i < 200; i++) {
+    for (let i = 0; i < 80; i++) {
 
-        const confettiParticle = document.createElement("div");
+        const particle = document.createElement("div");
 
         const angle = Math.random() * 2 * Math.PI;
-        const distance = 300 + Math.random() * 700;
+        const distance = 250 + Math.random() * 650;
 
         const targetX = Math.cos(angle) * distance;
         const targetY = Math.sin(angle) * distance;
 
-        const size = 5 + Math.random() * 8;
+        const size = 12 + Math.random() * 18;
 
-        confettiParticle.style.width = size + "px";
-        confettiParticle.style.height = size + "px";
+        particle.textContent =
+            symbols[Math.floor(Math.random() * symbols.length)];
 
-        confettiParticle.style.backgroundColor =
-            colors[Math.floor(Math.random() * colors.length)];
+        particle.style.position = "fixed";
 
-        confettiParticle.style.position = "fixed";
-
-        confettiParticle.style.left =
+        particle.style.left =
             (window.innerWidth / 2) + "px";
 
-        confettiParticle.style.top =
+        particle.style.top =
             (window.innerHeight / 2) + "px";
 
-        confettiParticle.style.borderRadius =
-            Math.random() > 0.5 ? "50%" : "3px";
+        particle.style.fontSize =
+            size + "px";
 
-        confettiParticle.style.pointerEvents = "none";
+        particle.style.color =
+            colors[Math.floor(Math.random() * colors.length)];
 
-        confettiParticle.style.transition =
-            "all 1.2s cubic-bezier(0.2, 0.8, 0.3, 1)";
+        particle.style.pointerEvents = "none";
 
-        document.body.appendChild(confettiParticle);
+        particle.style.zIndex = "1000";
+
+        particle.style.transition =
+            "all 1.5s cubic-bezier(0.2, 0.8, 0.3, 1)";
+
+        particle.style.opacity = "1";
+
+        document.body.appendChild(particle);
+
 
         setTimeout(function() {
 
-            confettiParticle.style.left =
+            particle.style.left =
                 (window.innerWidth / 2 + targetX) + "px";
 
-            confettiParticle.style.top =
+            particle.style.top =
                 (window.innerHeight / 2 + targetY) + "px";
 
-            confettiParticle.style.transform =
-                "rotate(" + Math.random() * 720 + "deg)";
+            particle.style.transform =
+                "rotate(" + (Math.random() * 720 - 360) + "deg) scale(0.5)";
 
-            confettiParticle.style.opacity = "0";
+            particle.style.opacity = "0";
 
         }, 10);
 
+
         setTimeout(function() {
-            confettiParticle.remove();
-        }, 1200);
+            particle.remove();
+        }, 1500);
     }
+
+
+    // =====================================
+    // KLEINE NACHRICHT
+    // =====================================
+
+    const message = document.createElement("div");
+
+    message.className = "yes-message";
+    message.textContent = "Ich wusste es. ♡";
+
+    document.body.appendChild(message);
+
+
+    // =====================================
+    // WEITER
+    // =====================================
 
     setTimeout(function() {
         window.location.href = "pleasure.html";
-    }, 1500);
+    }, 1800);
 
 });
