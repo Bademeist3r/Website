@@ -796,31 +796,24 @@ body {
 
 #FlipHint {
     position: absolute;
-
     left: 50%;
-
-    top: calc(52% + 275px);
-
-    transform:
-        translateX(-50%);
-
+    top: calc(100% + 15px);
+    transform: translateX(-50%);
     margin: 0;
-
     width: max-content;
-
-    font-family:
-        'Quicksand',
-        sans-serif;
-
+    font-family: 'Quicksand', sans-serif;
     font-size: 0.95rem;
-
     font-weight: 600;
-
-    color: #a68c76;
-
+    color: #8a6f5a;
     text-align: center;
+    opacity: 1;
+    z-index: 100;
+    transition: opacity 0.4s ease;
+}
 
-    opacity: 0.8;
+#FlipHint.hidden {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .quotes-container {
@@ -1598,11 +1591,9 @@ body {
     }
 
     #FlipHint {
-        top: calc(48% + 53vw);
-
-        width: 100%;
-
-        font-size: 0.85rem;
+    top: calc(100% + 10px);
+    font-size: 0.85rem;
+    white-space: nowrap;
     }
 
     .quotes-container {

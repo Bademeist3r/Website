@@ -2,6 +2,7 @@ const PreviousButton = document.getElementById("PreviousButton");
 const NextButton = document.getElementById("NextButton");
 const AddButton = document.getElementById("AddButton");
 const BackButton = document.getElementById("BackButton");
+
 const FlipHint = document.getElementById("FlipHint");
 const ImageUpload = document.getElementById("ImageUpload");
 const AlbumImage = document.getElementById("AlbumImage");
@@ -10,12 +11,9 @@ const polaroidInner = document.querySelector(".polaroid-inner");
 const polaroidBack = document.querySelector(".polaroid-back");
 
 const Note = document.getElementById("Note");
-
-const QuotesButton =
-    document.getElementById("QuotesButton");
-
-const ClickHint =
-    document.getElementById("ClickHint");
+const QuotesButton = document.getElementById("QuotesButton");
+const ClickHint = document.getElementById("ClickHint");
+let flipHintShown = false;
 
 const defaultPictures = [
     "pics/elevator.png",
@@ -30,10 +28,12 @@ let album = JSON.parse(
 if (album.length === 0) {
 
     album = defaultPictures.map(function(image) {
+
         return {
             image: image,
             note: ""
         };
+
     });
 
     saveAlbum();
@@ -47,6 +47,7 @@ function saveAlbum() {
         "album",
         JSON.stringify(album)
     );
+
 }
 
 function showPicture() {
@@ -62,6 +63,9 @@ function showPicture() {
         album[currentPicture].note;
 
     polaroidInner.classList.remove("flipped");
+
+    FlipHint.classList.add("hidden");
+
 }
 
 AlbumImage.addEventListener(
@@ -69,11 +73,17 @@ AlbumImage.addEventListener(
     function() {
 
         polaroidInner.classList.add("flipped");
-
         ClickHint.classList.add("hidden");
 
-        FlipHint.textContent =
-            "Hier klicken, um es wieder umzudrehen ♡";
+        if (!flipHintShown) {
+
+            FlipHint.textContent =
+                "↑ Zum Umdrehen hier klicken ♡";
+
+            FlipHint.classList.remove("hidden");
+
+            flipHintShown = true;
+        }
     }
 );
 
@@ -83,12 +93,9 @@ polaroidBack.addEventListener(
 
         if (event.target !== Note) {
 
-            polaroidInner.classList.remove(
-                "flipped"
-            );
+            polaroidInner.classList.remove("flipped");
 
-            FlipHint.textContent =
-                "Zum Umdrehen hier klicken ♡";
+            FlipHint.classList.add("hidden");
         }
     }
 );
@@ -98,6 +105,7 @@ Note.addEventListener(
     function(event) {
 
         event.stopPropagation();
+
     }
 );
 
@@ -109,6 +117,7 @@ Note.addEventListener(
             Note.value;
 
         saveAlbum();
+
     }
 );
 
@@ -122,9 +131,11 @@ PreviousButton.addEventListener(
 
             currentPicture =
                 album.length - 1;
+
         }
 
         showPicture();
+
     }
 );
 
@@ -137,9 +148,11 @@ NextButton.addEventListener(
         if (currentPicture >= album.length) {
 
             currentPicture = 0;
+
         }
 
         showPicture();
+
     }
 );
 
@@ -148,6 +161,7 @@ AddButton.addEventListener(
     function() {
 
         ImageUpload.click();
+
     }
 );
 
@@ -166,8 +180,7 @@ ImageUpload.addEventListener(
             return;
         }
 
-        const reader =
-            new FileReader();
+        const reader = new FileReader();
 
         reader.onload =
             function(e) {
@@ -195,11 +208,13 @@ ImageUpload.addEventListener(
                     },
                     300
                 );
+
             };
 
         reader.readAsDataURL(file);
 
         ImageUpload.value = "";
+
     }
 );
 
@@ -209,6 +224,7 @@ QuotesButton.addEventListener(
 
         window.location.href =
             "quotes.html";
+
     }
 );
 
@@ -218,6 +234,7 @@ BackButton.addEventListener(
 
         window.location.href =
             "pleasure.html";
+
     }
 );
 
@@ -230,6 +247,7 @@ AlbumImage.addEventListener(
 
         touchStartX =
             event.changedTouches[0].screenX;
+
     }
 );
 
@@ -252,7 +270,9 @@ AlbumImage.addEventListener(
             currentPicture++;
 
             if (currentPicture >= album.length) {
+
                 currentPicture = 0;
+
             }
 
         } else {
@@ -260,12 +280,16 @@ AlbumImage.addEventListener(
             currentPicture--;
 
             if (currentPicture < 0) {
+
                 currentPicture =
                     album.length - 1;
+
             }
+
         }
 
         showPicture();
+
     }
 );
 
