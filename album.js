@@ -1,26 +1,21 @@
 const PreviousButton = document.getElementById("PreviousButton");
 const NextButton = document.getElementById("NextButton");
 const AddButton = document.getElementById("AddButton");
+const BackButton = document.getElementById("BackButton");
 
 const ImageUpload = document.getElementById("ImageUpload");
-
 const AlbumImage = document.getElementById("AlbumImage");
 
 const polaroidInner = document.querySelector(".polaroid-inner");
 const polaroidBack = document.querySelector(".polaroid-back");
 
 const Note = document.getElementById("Note");
-const ClickHint = document.getElementById("ClickHint");
-const QuotesButton = document.getElementById("QuotesButton");
-const BackButton =
-    document.getElementById("BackButton");
 
-BackButton.addEventListener("click", function() {
-    window.location.href = "pleasure.html";
-});
-// =========================================
-// STANDARD-BILDER
-// =========================================
+const QuotesButton =
+    document.getElementById("QuotesButton");
+
+const ClickHint =
+    document.getElementById("ClickHint");
 
 const defaultPictures = [
     "pics/elevator.png",
@@ -28,48 +23,23 @@ const defaultPictures = [
     "pics/paddl.png"
 ];
 
-
-//=========================================
-///Quotes
-///=========================================
-
-QuotesButton.addEventListener("click", function() {
-
-    window.location.href = "quotes.html";
-
-});
-
-// =========================================
-// ALBUM LADEN
-// =========================================
-
 let album = JSON.parse(
     localStorage.getItem("album")
 ) || [];
 
-
-// Falls noch kein Album existiert
 if (album.length === 0) {
 
     album = defaultPictures.map(function(image) {
-
         return {
             image: image,
             note: ""
         };
-
     });
 
     saveAlbum();
 }
 
-
 let currentPicture = 0;
-
-
-// =========================================
-// ALBUM SPEICHERN
-// =========================================
 
 function saveAlbum() {
 
@@ -78,11 +48,6 @@ function saveAlbum() {
         JSON.stringify(album)
     );
 }
-
-
-// =========================================
-// BILD ANZEIGEN
-// =========================================
 
 function showPicture() {
 
@@ -96,181 +61,206 @@ function showPicture() {
     Note.value =
         album[currentPicture].note;
 
-    // Immer Vorderseite anzeigen
     polaroidInner.classList.remove("flipped");
 }
 
+AlbumImage.addEventListener(
+    "click",
+    function() {
 
-// =========================================
-// FOTO → RÜCKSEITE
-// =========================================
+        polaroidInner.classList.add("flipped");
 
-AlbumImage.addEventListener("click", function() {
-
-    polaroidInner.classList.add("flipped");
-    ClickHint.classList.add("hidden");
-
-});
-
-
-// =========================================
-// RÜCKSEITE → VORDERSEITE
-// =========================================
-
-polaroidBack.addEventListener("click", function(event) {
-
-    if (event.target !== Note) {
-
-        polaroidInner.classList.remove("flipped");
-
+        ClickHint.classList.add("hidden");
     }
+);
 
-});
+polaroidBack.addEventListener(
+    "click",
+    function(event) {
 
+        if (event.target !== Note) {
 
-// Verhindert, dass ein Klick
-// in das Textfeld die Karte zurückdreht
-
-Note.addEventListener("click", function(event) {
-
-    event.stopPropagation();
-
-});
-
-
-// =========================================
-// NOTIZ SPEICHERN
-// =========================================
-
-Note.addEventListener("input", function() {
-
-    album[currentPicture].note =
-        Note.value;
-
-    saveAlbum();
-
-});
-
-
-// =========================================
-// VORHERIGES BILD
-// =========================================
-
-PreviousButton.addEventListener("click", function() {
-
-    currentPicture--;
-
-    if (currentPicture < 0) {
-
-        currentPicture =
-            album.length - 1;
+            polaroidInner.classList.remove(
+                "flipped"
+            );
+        }
     }
+);
 
-    showPicture();
+Note.addEventListener(
+    "click",
+    function(event) {
 
-});
-
-
-// =========================================
-// NÄCHSTES BILD
-// =========================================
-
-NextButton.addEventListener("click", function() {
-
-    currentPicture++;
-
-    if (currentPicture >= album.length) {
-
-        currentPicture = 0;
+        event.stopPropagation();
     }
+);
 
-    showPicture();
+Note.addEventListener(
+    "input",
+    function() {
 
-});
-
-
-// =========================================
-// + BUTTON
-// =========================================
-
-AddButton.addEventListener("click", function() {
-
-    ImageUpload.click();
-
-});
-
-
-// =========================================
-// BILD HINZUFÜGEN
-// =========================================
-
-ImageUpload.addEventListener("change", function(event) {
-
-    const file = event.target.files[0];
-
-    if (!file) {
-        return;
-    }
-
-
-    // Nur Bilder erlauben
-    if (!file.type.startsWith("image/")) {
-
-        return;
-    }
-
-
-    const reader = new FileReader();
-
-
-    reader.onload = function(e) {
-
-        album.push({
-
-            image: e.target.result,
-
-            note: ""
-
-        });
-
-
-        // Neues Bild auswählen
-        currentPicture =
-            album.length - 1;
-
+        album[currentPicture].note =
+            Note.value;
 
         saveAlbum();
+    }
+);
+
+PreviousButton.addEventListener(
+    "click",
+    function() {
+
+        currentPicture--;
+
+        if (currentPicture < 0) {
+
+            currentPicture =
+                album.length - 1;
+        }
 
         showPicture();
+    }
+);
 
+NextButton.addEventListener(
+    "click",
+    function() {
 
-        // Kleiner romantischer Effekt
-        AlbumImage.style.transform =
-            "scale(1.03)";
+        currentPicture++;
 
+        if (currentPicture >= album.length) {
 
-        setTimeout(function() {
+            currentPicture = 0;
+        }
 
-            AlbumImage.style.transform =
-                "scale(1)";
+        showPicture();
+    }
+);
 
-        }, 300);
+AddButton.addEventListener(
+    "click",
+    function() {
 
-    };
+        ImageUpload.click();
+    }
+);
 
+ImageUpload.addEventListener(
+    "change",
+    function(event) {
 
-    reader.readAsDataURL(file);
+        const file =
+            event.target.files[0];
 
+        if (!file) {
+            return;
+        }
 
-    // Damit dasselbe Bild
-    // direkt nochmal gewählt werden kann
-    ImageUpload.value = "";
+        if (!file.type.startsWith("image/")) {
+            return;
+        }
 
-});
+        const reader =
+            new FileReader();
 
+        reader.onload =
+            function(e) {
 
-// =========================================
-// ALBUM STARTEN
-// =========================================
+                album.push({
+                    image: e.target.result,
+                    note: ""
+                });
+
+                currentPicture =
+                    album.length - 1;
+
+                saveAlbum();
+                showPicture();
+
+                AlbumImage.style.transform =
+                    "scale(1.03)";
+
+                setTimeout(
+                    function() {
+
+                        AlbumImage.style.transform =
+                            "scale(1)";
+
+                    },
+                    300
+                );
+            };
+
+        reader.readAsDataURL(file);
+
+        ImageUpload.value = "";
+    }
+);
+
+QuotesButton.addEventListener(
+    "click",
+    function() {
+
+        window.location.href =
+            "quotes.html";
+    }
+);
+
+BackButton.addEventListener(
+    "click",
+    function() {
+
+        window.location.href =
+            "pleasure.html";
+    }
+);
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+AlbumImage.addEventListener(
+    "touchstart",
+    function(event) {
+
+        touchStartX =
+            event.changedTouches[0].screenX;
+    }
+);
+
+AlbumImage.addEventListener(
+    "touchend",
+    function(event) {
+
+        touchEndX =
+            event.changedTouches[0].screenX;
+
+        const swipeDistance =
+            touchEndX - touchStartX;
+
+        if (Math.abs(swipeDistance) < 50) {
+            return;
+        }
+
+        if (swipeDistance < 0) {
+
+            currentPicture++;
+
+            if (currentPicture >= album.length) {
+                currentPicture = 0;
+            }
+
+        } else {
+
+            currentPicture--;
+
+            if (currentPicture < 0) {
+                currentPicture =
+                    album.length - 1;
+            }
+        }
+
+        showPicture();
+    }
+);
 
 showPicture();
